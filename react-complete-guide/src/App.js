@@ -15,15 +15,26 @@ class App extends Component {
 
   // need to use fat arrow functions for "this" to work in handler.
   // "this" will refer to the class App at runtime, and is only used in class-based components, not functional components.
-  switchNameHandler = () => {
+  switchNameHandler = (newName) => {
     console.log('You clicked me!')
     // we haven't defined setState function, because we extended Component from
     // the react library, the Component object has a setState function
     this.setState({
       persons: [
-        { name: 'Vuong', age: 29 }, // pass number for age instead of string
-        { name: 'Angela', age: 29}, 
-        { name: 'Stephanie', age: 5}
+        { name: newName, age: 29 }, // pass number for age instead of string
+        { name: 'Angela', age: 29 }, 
+        { name: 'Stephanie', age: 5 }
+      ]
+    })
+  }
+
+  nameChangeHandler = (event) => {
+    // console.log(event.target.value)
+    this.setState({
+      persons: [
+        { name: 'George', age: 29 }, // pass number for age instead of string
+        { name: 'Angela', age: 29 }, 
+        { name: event.target.value, age: 5 }       
       ]
     })
   }
@@ -33,11 +44,20 @@ class App extends Component {
       <div className="App">
         <h1>Hi, I'm a React App</h1>
         <p>This is really working.</p>
-        {/* pass onClick handler function as a reference, do not invoke with ()*/}
-        <button onClick={this.switchNameHandler}>Switch Name</button>
-        <Person name={this.state.persons[0].name} age={this.state.persons[0].age}></Person>
-        <Person name={this.state.persons[1].name} age={this.state.persons[1].age}> Things in Common: From California </Person>
-        < Person name={this.state.persons[2].name} age={this.state.persons[2].age}/>
+        {/* arrow function implicitly adds a return keyword if function is written in one line. The alternative is to wrap return value in {} and write a normal function. The anonymous function will return the function call, and is not executed immediately. However this can be inefficient, use bind syntax instead.*/}
+        <button onClick={() => this.switchNameHandler('George!!')}>Switch Name</button>
+        <Person 
+          name={this.state.persons[0].name} 
+          age={this.state.persons[0].age}
+        />
+        <Person 
+          name={this.state.persons[1].name} 
+          age={this.state.persons[1].age}
+          click={this.switchNameHandler.bind(this, 'Max')}>Things in Common: From California </Person>
+        <Person 
+          name={this.state.persons[2].name} 
+          age={this.state.persons[2].age}
+          change={this.nameChangeHandler}/>
       </div>
     );
   }
