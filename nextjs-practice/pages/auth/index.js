@@ -12,7 +12,6 @@ const authIndexPage = () => {
                 <Link href="/"><a> home page</a></Link>
             </p>
             <button onClick={() => Router.push('/')}>Go to home page</button>
-
             <User name='George' age={29} />
         </div>
     )
