@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import Person from './Person/Person';
+import Person from '../components/Persons/Person/Person';
 // library to use pseudo-selectors and media queries with inline styling
 import Radium, { StyleRoot } from 'radium'; 
 
