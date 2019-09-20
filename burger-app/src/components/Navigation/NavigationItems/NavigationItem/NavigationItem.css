@@ -25,7 +25,6 @@ note: media queries will overwrite values in the original class */
 @media (min-width: 500px) {
     .NavigationItem {
         margin: 0;
-        /* box-sizing: border-box; */
         display: flex;
         height: 100%;
         width: auto;
@@ -34,12 +33,9 @@ note: media queries will overwrite values in the original class */
 
     .NavigationItem a {
         color: white;
-        /* text-decoration: none; */
         height: 100%;
         padding: 16px 10px;
         border-bottom: 4px solid transparent;
-        /* box-sizing: border-box;
-        display: block; */
     }
 
     .NavigationItem a:hover,

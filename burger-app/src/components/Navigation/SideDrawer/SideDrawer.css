@@ -25,11 +25,12 @@
 
 /* shift side drawer to the left */
 .Close {
-    transform: translateX(-100); 
+    transform: translateX(-100%); 
 }
 
 /* note: there are 3 CSS classes called "Logo". However, due to CSS Modules,
 each Logo class are independent of each other. */
 .Logo {
     height: 11%;
+    margin-bottom: 32px;
 }
