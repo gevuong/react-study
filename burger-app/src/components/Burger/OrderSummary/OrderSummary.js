@@ -7,7 +7,7 @@ import Button from '../../UI/Button/Button';
 // change to a class is to add componentWillUpdate for debugging purposes.
 class OrderSummary extends Component {
     UNSAFE_componentWillUpdate() {
-        console.log('OrderSummary will update')
+        console.log('[OrderSummary] will update')
     }
 
     render() {

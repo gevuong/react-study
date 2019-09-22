@@ -20,7 +20,7 @@ class Modal extends Component {
     // an update occurs. This method is not called for the initial render
     // and if shouldComponentUpdate returns false.
     UNSAFE_componentWillUpdate() {
-        console.log('Modal Will Update')
+        console.log('[Modal] will update')
     }
 
     render() {
