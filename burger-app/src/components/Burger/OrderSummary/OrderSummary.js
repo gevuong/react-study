@@ -6,6 +6,13 @@ import Button from '../../UI/Button/Button';
 // Note: component was originally a functional component. Reason for 
 // change to a class is to add componentWillUpdate for debugging purposes.
 class OrderSummary extends Component {
+    // method is invoked before rendering when new props or state are being
+    // received. Use this as an opportunity to perform preparation before
+    // an update occurs. This method is not called for the initial render,
+    // and if shouldComponentUpdate returns false.
+    //
+    // Because OrderSummary is executed inside a Modal component, OrderSummary
+    // will only render if Modal component renders.
     UNSAFE_componentWillUpdate() {
         console.log('[OrderSummary] will update')
     }

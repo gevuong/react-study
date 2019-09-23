@@ -12,18 +12,21 @@ class Modal extends Component {
     // Method is invoked before rendering when new props or state are being 
     // received. This method is not called for the initial render. 
     // Method only exists as a performance optimization.
+    //
+    // update component if current and previous props.children are different
     shouldComponentUpdate(nextProps, _) {
-        return nextProps.show !== this.props.show
+        return nextProps.show !== this.props.show || nextProps.children !== this.props.children
     }
     // method is invoked before rendering when new props or state are being
     // received. Use this as an opportunity to perform preparation before
-    // an update occurs. This method is not called for the initial render
+    // an update occurs. This method is not called for the initial render,
     // and if shouldComponentUpdate returns false.
     UNSAFE_componentWillUpdate() {
         console.log('[Modal] will update')
     }
 
     render() {
+        // console.log("children", this.props.children)
         return (
             <Aux>
                 <Backdrop 
