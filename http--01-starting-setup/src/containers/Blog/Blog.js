@@ -45,7 +45,6 @@ class Blog extends Component {
 
     render () {
         let posts = <p style={{textAlign: 'center'}}>Something went wrong!</p>
-
         if (!this.state.error) {
             // map each post into an array of JSX elements and store in posts
             posts = this.state.posts.map(post => {

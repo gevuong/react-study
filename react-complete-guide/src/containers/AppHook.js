@@ -4,7 +4,8 @@ import Person from './Person/Person';
 
 // functional component that can manage state and return jsx
 const appHook = () => {
-  // array destructuring, second variable 
+  // array destructuring, useState returns a stateful value
+  // and a function to update it. 
   const [personsState, setPersonsState] = useState({
       persons: [
       { name: 'George', age: 29 }, // pass number for age instead of string
