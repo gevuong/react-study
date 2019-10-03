@@ -1,0 +1,13 @@
+/* note: there are 3 CSS classes called "Logo". However, due to CSS Modules,
+each Logo class are independent of each other. */
+.Logo {
+    background-color: white;
+    padding: 8px;
+    height: 100%;
+    box-sizing: border-box;
+    border-radius: 5px;
+}
+
+.Logo img {
+    height: 100%;
+}
