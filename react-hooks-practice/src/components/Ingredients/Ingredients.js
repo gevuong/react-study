@@ -15,11 +15,11 @@ const Ingredients = () => {
   }
 
   const removeIngredientHandler = ingredientId => { 
-    setUserIngredients(
-      userIngredients.filter(ingredient => ( 
+    setUserIngredients(prevIngredients => (
+      prevIngredients.filter(ingredient => ( 
         ingredient.id !== ingredientId 
       ))
-    )
+    ))
   }
 
   return (
