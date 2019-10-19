@@ -3,7 +3,8 @@ import React, { useState } from 'react';
 import Card from '../UI/Card';
 import './IngredientForm.css';
 
-// memo is used to prevent unnecessary re-renders
+// memo is used to prevent unnecessary re-renders when its root component
+// re-renders.
 const IngredientForm = React.memo(props => {
   // these states survive re-render cycles, and so survives re-renders of 
   // other states. Title and amount are managed independently. 
