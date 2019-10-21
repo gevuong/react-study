@@ -3,14 +3,16 @@ import React, { useState } from 'react';
 import Card from '../UI/Card';
 import './IngredientForm.css';
 
+// memo is used to prevent unnecessary re-renders when its root component
+// re-renders.
 const IngredientForm = React.memo(props => {
-  const [ inputState, setInputState ] = useState({ title: '', amount: '' })
-  // these states survives re-render cycles, and so survives re-renders of other
-  // const [enteredTitle, setEnteredTitle] = useState('')
-  // const [enteredAmount, setEnteredAmount] = useState('')
+  // these states survive re-render cycles, and so survives re-renders of 
+  // other states. Title and amount are managed independently. 
+  const [enteredTitle, setEnteredTitle] = useState('')
+  const [enteredAmount, setEnteredAmount] = useState('')
   const submitHandler = event => {
     event.preventDefault();
-    // ...
+    props.onAddIngredient({ title: enteredTitle, amount: enteredAmount })
   };
 
   return (
@@ -22,22 +24,10 @@ const IngredientForm = React.memo(props => {
             <input 
               type="text"
               id="title"
-              value={inputState.title} 
+              value={enteredTitle} 
               // event is the change event, target is the input field, 
-              // value holds the value user enters. React reuses event object per
-              // keystroke, and since we have a closure and locked in the event
-              // for the first keystroke, the second keystroke reuses the same 
-              // event object as the previous keystroke. Ths is why a constant is 
-              // created outside of the closure to use a new event object per 
-              // keystroke.
-              onChange={event => {
-                const newTitle = event.target.value
-                setInputState(prevInputState => ({ 
-                  title: newTitle, 
-                  amount: prevInputState.amount 
-                }))
-              }
-              } 
+              // value holds the value user enters.
+              onChange={event => {setEnteredTitle(event.target.value)}} 
             />
           </div>
           <div className="form-control">
@@ -45,25 +35,14 @@ const IngredientForm = React.memo(props => {
             <input 
               type="number" 
               id="amount" 
-              value={inputState.amount} 
+              value={enteredAmount} 
               // event is the change event, target is the input field, 
-              // value holds the value user enters. React reuses event object per
-              // keystroke, and since we have a closure and locked in the event
-              // for the first keystroke, the second keystroke reuses the same 
-              // event object as the previous keystroke. Ths is why a constant is 
-              // created outside of the closure to use a new event object per 
-              // keystroke.
-              onChange={event => {
-                const newAmount = event.target.value
-                setInputState(prevInputState => ({
-                  amount: newAmount,
-                  title: prevInputState.title 
-                }))
-              }
-              }
+              // value holds the value user enters.
+              onChange={event => {setEnteredAmount(event.target.value)}}
             />
           </div>
           <div className="ingredient-form__actions">
+            {/* button of type submit triggers onSubmit handler in form */}
             <button type="submit">Add Ingredient</button>
           </div>
         </form>
